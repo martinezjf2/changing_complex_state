@@ -8,7 +8,29 @@ function App() {
   });
 
   function handleChange(event) {
+    const { value, name } = event.target;
 
+    setContact((previous) => {
+      if (name === "fName") {
+        return {
+          fName: value,
+          lName: previous.lName,
+          email: previous.email
+        };
+      } else if (name === "lName") {
+        return {
+          fName: previous.fName,
+          lName: value,
+          email: previous.email
+        };
+      } else if (name === "email") {
+        return {
+          fName: previous.fName,
+          lName: previous.lName,
+          email: value
+        };
+      }
+    });
   }
 
   return (
